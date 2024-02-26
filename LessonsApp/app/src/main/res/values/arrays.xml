@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="options_1">
+        <item>Nunca programei</item>
+        <item>Iniciante</item>
+        <item>Intermediário</item>
+        <item>Avançado</item>
+    </array>
+
+    <array name="options_2">
+        <item>Flutter</item>
+        <item>Swift</item>
+        <item>Kotlin</item>
+        <item>Java</item>
+    </array>
+
+    <array name="options_3">
+        <item>Sintaxe Kotlin</item>
+        <item>UI</item>
+        <item>Framework de backend</item>
+        <item>Serviços Android</item>
+    </array>
+
+    <array name="options_4">
+        <item>Marketplace</item>
+        <item>Quiz</item>
+        <item>Lições</item>
+        <item>Jogos</item>
+    </array>
+</resources>
