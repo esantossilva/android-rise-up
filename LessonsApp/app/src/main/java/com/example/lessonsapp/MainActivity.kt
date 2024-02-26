@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // Criar adapter
         val recyclerAdapter = MyRecyclerAdapter(this, contactList)
         recyclerAdapter.setItemClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, OnboardingQuizActivity::class.java)
             intent.putExtra(EMAIL_KEY_EXTRA, it.email)
             startActivity(intent)
         }
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToNextActivity() {
-        val intent = Intent(this, MainActivity2::class.java)
+        val intent = Intent(this, OnboardingQuizActivity::class.java)
         startActivity(intent)
     }
 }

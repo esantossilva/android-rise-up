@@ -4,11 +4,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lessonsapp.databinding.ActivityMain2Binding
+import com.example.lessonsapp.databinding.ActivityOnboardingQuizBinding
 
-class MainActivity2 : AppCompatActivity() {
+class OnboardingQuizActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMain2Binding
+    private lateinit var binding: ActivityOnboardingQuizBinding
     private var questionList = emptyList<Question>()
     private var activeQuestionId = 0
     private lateinit var preferences: SharedPreferences
@@ -24,14 +24,14 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inicia as preferências
-        preferences = getSharedPreferences(MainActivity.PREFERENCES_NAME, MODE_PRIVATE)
+        // Init preferences
+        preferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE)
 
-        // Inicia o binding
-        binding = ActivityMain2Binding.inflate(layoutInflater)
+        // Init binding
+        binding = ActivityOnboardingQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Criar lista de questões
+        // Creates question list
         questionList = listOf(
             Question(
                 1,
@@ -55,67 +55,49 @@ class MainActivity2 : AppCompatActivity() {
             ),
         )
 
-        // Coloca a primeira questão
+        // Setup first qusetion
         setQuestion(0)
 
-        // Adiciona clique do botão Next
+        // Adds click listener
         with(binding) {
             bNext.setOnClickListener {
-
-                if (activeQuestionId < questionList.size - 1) {
-                    // Submete a resposta
-                    val option = rgOptionsContainer.checkedRadioButtonId
-                    submitAnswer(getRadioButtonId(option))
-                }
-                else {
-                    // Próxima Activity
+                if (activeQuestionId < questionList.size - 1)
+                    submitAnswer(getRadioButtonId(rgOptionsContainer.checkedRadioButtonId))
+                else
                     goToNextActivity()
-                }
             }
         }
     }
 
     private fun setQuestion(questionId: Int) {
         if (questionId < questionList.size) {
-            // Questão atual
             val currentQuestion = questionList[questionId]
 
             binding.apply {
-                // Altera o enunciado
                 tvQuestion.text = currentQuestion.question
 
-                // Altera as opções
                 rbOption1.text = currentQuestion.optionsList[0]
                 rbOption2.text = currentQuestion.optionsList[1]
                 rbOption3.text = currentQuestion.optionsList[2]
                 rbOption4.text = currentQuestion.optionsList[3]
 
-                // Limpa o check do RadioGroup
                 rgOptionsContainer.clearCheck()
             }
         }
 
-        if (activeQuestionId == questionList.size - 1) {
-            // Altera botão ao chegar no final
+        if (activeQuestionId == questionList.size - 1)
             binding.bNext.text = getString(R.string.button_finish)
-        }
     }
 
     private fun submitAnswer(optionId: Int) {
-        // Obtém a resposta
         val currentQuestion = questionList[activeQuestionId]
         val submittedOption = currentQuestion.optionsList[optionId]
 
-
-        // Salva resposta nas preferências
         saveToPrefs(
             getSharedPrefsKey(activeQuestionId),
             submittedOption
         )
 
-
-
-        // Muda para próxima questão
         if (activeQuestionId < questionList.size) {
             activeQuestionId++
             setQuestion(activeQuestionId)
@@ -131,7 +113,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
     private fun goToNextActivity() {
-        val intent = Intent(this, MainActivity3::class.java)
+        val intent = Intent(this, Activity3::class.java)
         startActivity(intent)
     }
 
