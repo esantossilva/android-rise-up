@@ -11,4 +11,6 @@
     <string name="option_2">Qual a linguagem de programação favorita?</string>
     <string name="option_3">O que você quer aprender no app?</string>
     <string name="option_4">Qual tipo de app você quer desenvolver?</string>
+    <string name="activity_3_label">User</string>
+    <string name="activity_3_user_data_label">User data</string>
 </resources>

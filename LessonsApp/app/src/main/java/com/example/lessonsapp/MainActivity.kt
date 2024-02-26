@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val PREFERENCES_NAME = "ashe728y9e2h387"
+        const val CONTACT_ID = "iqhwudh83hois"
         const val EMAIL_KEY = "98ueh18e"
         const val EMAIL_KEY_EXTRA = "98392h37h923e-1093ie"
     }
@@ -26,19 +27,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Cria a lista de contatos
-        val contactList = listOf(
-            Contact(1, "João", "joao@gmail.com", "8199990001"),
-            Contact(2, "Amanda", "amanda@gmail.com", "8199990002"),
-            Contact(3, "José", "jose@gmail.com", "8199990003"),
-            Contact(4, "Cecília", "cecilia@gmail.com", "8199990004"),
-        )
+        val contactDb = ContactRepositoryFake()
 
         preferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE)
 
         // Criar adapter
-        val recyclerAdapter = MyRecyclerAdapter(this, contactList)
+        val recyclerAdapter = MyRecyclerAdapter(this, contactDb.getContactList())
         recyclerAdapter.setItemClickListener {
-            val intent = Intent(this, OnboardingQuizActivity::class.java)
+            val intent = Intent(this, Activity3::class.java)
+            intent.putExtra(CONTACT_ID, it.id)
             intent.putExtra(EMAIL_KEY_EXTRA, it.email)
             startActivity(intent)
         }
