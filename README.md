@@ -17,6 +17,6 @@ App developed alongside students to teach and showcase Android mobile developmen
 
 ## Gallery
 
-![](images/drive.png)
-![](images/drive.png)
-![](images/drive.png)
+![](gallery/main1.png)
+![](gallery/quiz.png)
+![](gallery/user.png)
