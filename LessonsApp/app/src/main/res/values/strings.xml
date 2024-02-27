@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">LessonsApp</string>
+    <string name="text_change">Mudei o texto, pessoal!</string>
+    <string name="text_change_2">E aí, galera!</string>
+    <string name="text_1">E aí, galeraaaaaaaaa!</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="button_quiz_app">Quiz App</string>
+    <string name="button_finish">Finalizar</string>
+
+    <string name="option_1">Qual o seu nível de programação?</string>
+    <string name="option_2">Qual a linguagem de programação favorita?</string>
+    <string name="option_3">O que você quer aprender no app?</string>
+    <string name="option_4">Qual tipo de app você quer desenvolver?</string>
+    <string name="activity_3_label">User</string>
+    <string name="activity_3_user_data_label">User data</string>
+</resources>
